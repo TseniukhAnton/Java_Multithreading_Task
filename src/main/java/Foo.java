@@ -10,5 +10,6 @@ public class Foo {
 
     public void third(Runnable r) {
         System.out.print("third");
+        System.out.println(" ");
     }
 }
