@@ -1,10 +1,11 @@
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 public class FooDemo {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         Foo foo = new Foo();
-        CompletableFuture<Void> printFirst = CompletableFuture.runAsync(new FirstThread(foo) {
+        CompletableFuture<Void> printFirst = CompletableFuture.runAsync(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -16,7 +17,7 @@ public class FooDemo {
             }
         });
 
-        CompletableFuture<Void> printSecond = CompletableFuture.runAsync(new SecondThread(foo) {
+        CompletableFuture<Void> printSecond = CompletableFuture.runAsync(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -28,7 +29,7 @@ public class FooDemo {
             }
         });
 
-        CompletableFuture<Void> printThird = CompletableFuture.runAsync(new ThirdThread(foo) {
+        CompletableFuture<Void> printThird = CompletableFuture.runAsync(new Runnable() {
             @Override
             public void run() {
                 try {
