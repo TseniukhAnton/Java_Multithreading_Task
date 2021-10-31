@@ -1,5 +1,7 @@
+import java.sql.Time;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 public class FooDemo {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -9,7 +11,7 @@ public class FooDemo {
             public void run() {
                 try {
                     foo.first(this::run);
-                    Thread.sleep(1000);
+                    TimeUnit.SECONDS.sleep(5);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -21,7 +23,7 @@ public class FooDemo {
             public void run() {
                 try {
                     foo.second(this::run);
-                    Thread.sleep(1000);
+                    TimeUnit.SECONDS.sleep(5);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -33,7 +35,7 @@ public class FooDemo {
             public void run() {
                 try {
                     foo.third(this::run);
-                    Thread.sleep(1000);
+                    TimeUnit.SECONDS.sleep(5);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
