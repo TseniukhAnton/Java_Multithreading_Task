@@ -2,7 +2,8 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 public class FooSem {
-    static Semaphore sem = new Semaphore(3);
+    static Semaphore sem = new Semaphore(1);
+    static Semaphore sem2 = new Semaphore(1);
 
     public void first(Runnable r) {
         try {
@@ -16,12 +17,12 @@ public class FooSem {
 
     public void second(Runnable r) {
         try {
-            sem.acquire();
+            sem2.acquire();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         System.out.print("second");
-        sem.release();
+        sem2.release();
     }
 
     public void third(Runnable r) {
