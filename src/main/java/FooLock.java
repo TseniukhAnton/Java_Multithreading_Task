@@ -12,8 +12,7 @@ public class FooLock {
     public void first(Runnable r) throws InterruptedException {
         lock.lock();
         try {
-            while (Thread.currentThread().isInterrupted())
-                cond.await(1, TimeUnit.SECONDS);
+            cond.await(1, TimeUnit.SECONDS);
             cond.signal();
             System.out.print("first");
         } catch (InterruptedException e){
@@ -23,11 +22,9 @@ public class FooLock {
         }
     }
 
-    public void second(Runnable r) {
-        lock.lock();
+    public void second(Runnable r) {        lock.lock();
         try {
-            while (Thread.currentThread().isInterrupted())
-                cond.await(10, TimeUnit.SECONDS);
+            cond.await(10, TimeUnit.SECONDS);
             cond.signal();
             System.out.print("second");
         } catch (InterruptedException e) {
@@ -40,8 +37,7 @@ public class FooLock {
     public void third(Runnable r) {
         lock.lock();
         try {
-            while (Thread.currentThread().isInterrupted())
-                cond.await(15, TimeUnit.SECONDS);
+            cond.await(15, TimeUnit.SECONDS);
             cond.signal();
             System.out.print("third");
         } catch (InterruptedException e) {
