@@ -22,7 +22,8 @@ public class FooLock {
         }
     }
 
-    public void second(Runnable r) {        lock.lock();
+    public void second(Runnable r) {
+        lock.lock();
         try {
             cond.await(10, TimeUnit.SECONDS);
             cond.signal();
